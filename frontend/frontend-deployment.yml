@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-pod
+  labels:
+    app: frontend-pod-label
+spec:
+  containers:
+  - name: my-web-server-container
+    image: moisesdias/myfront:2.0
+    ports:
+    - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: frontend-pod-label
+  ports:
+    - port: 80
+      name: http
+      protocol: TCP
+      targetPort: 80
+  type: LoadBalancer

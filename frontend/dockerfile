@@ -1,0 +1,10 @@
+# Use the official nginx image as the base image
+FROM nginx
+
+# Copy the HTML, CSS, and JavaScript files to the appropriate locations
+COPY index.html /usr/share/nginx/html/
+COPY css.css /usr/share/nginx/html/
+COPY js.js /usr/share/nginx/html/
+
+# Expose port 80 for HTTP traffic
+EXPOSE 80
